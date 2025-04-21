@@ -1,0 +1,118 @@
+Employee Work Management System
+
+👥 Gruppemedlemmer: Victoria, Diana, Odd, Arvid (Gruppe A)
+
+------------------------------------------------------------
+
+🔧 1. TEKNOLOGIVALG
+Frontend: HTML, CSS, JavaScript (ev. Bootstrap for stil)
+Backend: PHP
+Database: SQLite (enkel, lettvekts, kan ligge i `db/users.db`)
+
+------------------------------------------------------------
+
+Dette er et skoleprosjekt så vi tar ikke sikerheten så høyt her.
+Den skal ut på web nkey.no
+
+I ALLE koder og filer skrives funksjons navn og henvisninger på engelsk. mens vi skal ha forklaring på kodene disse skal være på både engelsk og russisk.
+
+
+🧩 2. MODULER / SIDESTRUKTUR
+
+📄 `index.html` – Landing Page
+- Beskrivelse av systemet og bakgrunnsbilde
+- Header: Logo(left) / NKEY System(center) / hvem som er logget inn eller Guest / Bilde av innloget eller /uploads/default.jpg(right)
+- Side Bar: Meny : "clock in/out","Login" ,"FAQ","Logout"
+- Footer: Enkel info og evt. link til GitHub
+
+📄 `login.php` – Påloggingsside
+- Enkel login med brukernavn/passord
+- Start sesjon ved suksess og redirect til dashboard
+
+📄 `dashboard.php` – Brukerens dashbord (etter login)
+- Viser brukerens info
+- Meny: "Home", "My Page", "My Timesheet", "My Vacation",  "Logout" / meny user
+- Meny: "Home", "My Page", "My Timesheet", "My Vacation",  "Logout", "USERS", "Timesheet", "Vacation" / meny admin.
+
+📄 `apply_leave.php` – Søknadsside for ferie
+- Viser: Totalt antall dager, brukt, resterende
+- Knapp for "Apply Leave" → åpner skjema
+- Skjema med preutfylte felt (navn, ID, e-post) og brukerinput (datoer, årsak, manager)
+
+📄 `timesheet.php` – Oversikt over arbeidstid
+- Viser dagens login-tid og timer igjen
+- Dropdown: Velg uke, måned, år
+- Tabell: Dato, login, logout, pause, unavailable, total
+
+📄 `contact.php` – Kontakt- og FAQ-side
+- 5 FAQ-spørsmål med "collapse"
+- "Others" → vis skjema for manuell kontakt
+- "Immediate contact" → vis admin-kontakt (kun hvis logget inn)
+
+📄 `logout.php` – Avslutter sesjon
+
+------------------------------------------------------------
+
+🗄️ 3. DATABASER (SQLite)
+
+📁 `/db/users.db`
+- Tabell: users (id, name, email, password_hash, is_admin, leave_quota, leave_used)
+- Tabell: leaves (leave_id, employee_id, from_date, to_date, reason, manager_email, status)
+- Tabell: timesheet (entry_id, employee_id, date, login, logout, pause, unavailable, total)
+
+------------------------------------------------------------
+
+🔑 4. AUTENTISERING
+
+- Bruk PHP-session for innlogging
+- Beskytt alle sider som krever innlogging
+- Hash passord med `password_hash()` og `password_verify()`
+
+------------------------------------------------------------
+
+🎨 5. DESIGN-KRAV
+
+- Responsivt design (mobil/desktop)
+- Hover-effekter og skyggeeffekt på knapper
+- Rød farge for "Apply Leave" disabled når ingen dager igjen
+- Grønn bekreftelse på innsendte skjema
+- Nav-bar synlig på alle sider, endres etter login-status
+
+------------------------------------------------------------
+
+🧪 6. UTVIKLINGSPLAN
+
+Uke 1:
+- Sette opp prosjektstruktur
+- Lage statiske sider (HTML + CSS)
+- Lage `users.db` og databaseoppsett
+
+Uke 2:
+- Implementere login og session
+- Lage funksjonalitet for å søke ferie
+- Vise timesheet fra database
+
+Uke 3:
+- Fullføre CRUD for ferie og arbeidstid
+- Finjustere UI og gjøre testing
+
+Uke 4:
+- Skrive dokumentasjon
+- Gjøre siste justeringer og opplasting til GitHub
+- Forberedelse til presentasjon
+
+------------------------------------------------------------
+
+📌 Notater:
+- Admin kan godkjenne/avslå ferieforespørsler i egen adminvisning.
+- Timesheet-data kan være manuelt lagt inn (eller testdata).
+- Lag en egen mappe `templates/` for header/footer.
+- Bruk `includes/` for config og funksjoner (f.eks. `config.php`, `functions.php`)
+- `favicon` og logo peker til `/img/nkey.ico` og `/img/nkey.jpg`
+
+------------------------------------------------------------
+
+Neste steg:
+1. Lag prosjektmappen med undermapper: `templates/`, `includes/`, `db/`, `css/`, `js/`, `img/`
+2. Lag en enkel `index.html` med header og login-knapp.
+3. Lag `users.db` med tabeller.

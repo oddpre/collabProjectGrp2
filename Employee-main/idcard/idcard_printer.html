@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID Card Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../img/favicon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="container_index"
+  <h2>Select Employee</h2>
+  <select class="user_select" id="userSelect">
+    <option class="user_select" value="">-- Select a user --</option>
+  </select>
+
+  <div class="card">
+    <img id="cardPhoto" src="/uploads/default.jpg" alt="Profile Photo" class="photo">
+    <div class="name" id="cardName">Full Name</div>
+    <div class="id" id="cardId">ID: </div>
+    <div class="dept" id="cardDept">Department</div>
+    <div class="qr" id="cardQr"></div>
+  </div>
+
+  <button class="btn_print" id="printBtn" onclick="window.print()">🖨 Print</button>
+  <button class="btn_mirror" id="printMirrorBtn" onclick="printMirrored()">🪞 Print Mirrored</button>
+  </div>
+  <script src="script.js">
+
+  </script>
+  
+</body>
+</html>

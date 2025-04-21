@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RFID Terminal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./img/favicon.png">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f9fa;
+      font-family: "Inter", sans-serif;
+    }
+    #rfidInput {
+      position: absolute;
+      top: -1000px;
+      left: -1000px;
+    }
+    .card {
+      width: 90%; /* Dynamisk bredde for mindre skjermer */
+      max-width: 500px; /* Maks bredde */
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      border-radius: 8px;
+    }
+    #qrVideoArea video {
+      width: 100%;
+      max-height: 240px;
+    }
+
+    /* Media query for 480x320 screens */
+    @media (max-width: 480px) {
+      .card {
+        width: 100%; /* Fyller hele bredden */
+        padding: 1rem; /* Mindre padding for små skjermer */
+      }
+      h4 {
+        font-size: 1.2rem; /* Juster fontstørrelse */
+      }
+      #qrVideoArea video {
+        max-height: 180px; /* Reduser høyden på videoen */
+      }
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="rfidInput" autocomplete="off" autofocus />
+
+  <div class="card shadow">
+    <h4 class="text-center mb-3">📡 RFID / QR Terminal</h4>
+
+    <div class="text-center">
+      <p id="message" class="lead">Waiting for scan...</p>
+      <p><strong id="name"></strong></p>
+      <p id="status"></p>
+      <p id="time"></p>
+    </div>
+
+    <div class="text-center mt-3">
+      <button id="qrBtn" class="btn btn-secondary">📷 Scan QR Code</button>
+    </div>
+
+    <div id="qrVideoArea" class="mt-3"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
